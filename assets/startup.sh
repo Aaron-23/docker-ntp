@@ -60,5 +60,14 @@ done
   echo "allow all"
 } >> ${CHRONY_CONF_FILE}
 
+
+if [ "${OFFLINE}"= "true" ]; then
+
+  echo "local stratum 10" >> ${CHRONY_CONF_FILE}
+  sed -i s/^server/#server/g  ${CHRONY_CONF_FILE}
+
+fi
+
+
 ## startup chronyd in the foreground
 exec /usr/sbin/chronyd -u chrony -d -x -L ${LOG_LEVEL}
