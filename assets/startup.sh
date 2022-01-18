@@ -61,10 +61,10 @@ done
 } >> ${CHRONY_CONF_FILE}
 
 
-if [ "${OFFLINE}"= "true" ]; then
+if [ "${OFFLINE}" == "true" ]; then
 
-  echo "local stratum 10" >> ${CHRONY_CONF_FILE}
   sed -i s/^server/#server/g  ${CHRONY_CONF_FILE}
+  echo "local stratum 10" >> ${CHRONY_CONF_FILE}
 
 fi
 
